@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="title" *ngIf="!employeeId">Add New Employee</div>
+    <div class="title" *ngIf="employeeId">Edit Employee</div>
+    <form [formGroup]="employeeDetails">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input type="text" placeholder="Enter your name" required formControlName="name" [ngClass]="{'error_box':name.invalid && (name.dirty || name.touched) || (personalDetailError && name.invalid) }"/>
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="text" placeholder="Enter your email" required formControlName="emailId" [ngClass]="{'error_box':emailId.invalid && (emailId.dirty || emailId.touched) || (personalDetailError && emailId.invalid) }"/>
+        </div>
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input type="text" placeholder="Enter your number" required formControlName="contactNumber" [ngClass]="{'error_box':contactNumber.invalid && (contactNumber.dirty || contactNumber.touched) || (personalDetailError && contactNumber.invalid) }"/>
+        </div>
+        <div class="input-box">
+            <span class="details">DOB</span>
+            <input type="date" placeholder="Enter your date of birth" 
+            [ngModel] ="dobModel | date:'yyyy-MM-dd'" (ngModelChange)="dobModel = $event" required formControlName="dob" [ngClass]="{'error_box':dob.invalid && (dob.dirty || dob.touched) || (personalDetailError && dob.invalid) }"/>
+          </div>
+        <div class="input-box">
+            <span class="details">Company Name</span>
+            <input type="text" placeholder="Enter your company name" required formControlName="companyName" [ngClass]="{'error_box':companyName.invalid && (companyName.dirty || companyName.touched) || (personalDetailError && companyName.invalid) }"/>
+        </div>
+        <div class="input-box">
+            <span class="details">Position</span>
+            <input type="text" placeholder="Enter your company" required formControlName="position" [ngClass]="{'error_box':position.invalid && (position.dirty || position.touched) || (personalDetailError && position.invalid) }"/>
+        </div>
+      </div>
+  
+      <div class="gender-details">
+        <input type="radio" name="gender" id="dot-1">
+        <input type="radio" name="gender" id="dot-2">
+        <span class="gender-title">Gender</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+        </div>
+      </div>
+  
+      <div class="button">
+        <input type="button" value="Submit" style="margin-left:10%;" (click)="submitDetail()" />
+        <input type="button" value="Back" style="margin-left:10%;" (click)="backToList()" />
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,17 @@
+<div class="BlockUIConfirm">
+	<div class="blockui-mask"></div>
+	<div class="RowDialogBody">
+		<div class="confirm-header row-dialog-hdr-success">
+		 Delete
+		</div>
+		<div class="confirm-body">
+			Are you sure,you want to delete ?
+		</div>
+		<div class="confirm-btn-panel pull-right">
+			<div class="btn-holder pull-right">
+				<input type="submit" class="row-dialog-btn btn btn-success" (click)="emitResult(true)" value="Delete"/>
+				<input type="button" class="row-dialog-btn btn btn-naked" style="margin-left:2%;" (click)="emitResult(false)" value="Cancel"/>
+			</div>
+		</div>
+	</div>
+</div>

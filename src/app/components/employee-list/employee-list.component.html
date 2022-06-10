@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="search-box">
+     <input type="text"[(ngModel)]="searchTerm"  class="search-input" placeholder="Search..">
+
+     <button class="search-button">
+       <i class="fas fa-search"></i>
+     </button>
+  </div>
+</div>
+<br>
+<table class="table">
+  <thead>
+    <th>S.No</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>DOB</th>
+    <th>Position</th>
+    <th>Company</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let value of tableData | search: searchTerm;let i = index;">
+      <td data-label="S.No">{{i + 1}}</td>
+      <td data-label="Name">{{value.fullName}}</td>
+      <td data-label="Gender">{{value.gender | gender}}</td>
+      <td data-label="DOB">{{value.dob | dateDob}}</td>
+      <td data-label="Position">{{value.position}}</td>
+      <td data-label="Company">{{value.company}}</td>
+      <td data-label="Email">{{value.email}}</td>
+      <td data-label="Phone">{{value.phone}}</td>
+      <td data-label="button"><button class="cancel button" (click)="deleteEmployee(value.id)">Delete</button>
+        <button class="cancel button" (click)="editEmployee(value.id)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-dialog-component *ngIf="deletePopup" (emitAction)="deleteConfirm($event)"></app-dialog-component>
+
